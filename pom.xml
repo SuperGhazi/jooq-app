@@ -82,7 +82,7 @@
 				<executions>
 					<execution>
 						<id>run-schema-and-data</id>
-						<phase>generate-sources</phase>
+						<phase>initialize</phase>
 						<goals>
 							<goal>execute</goal>
 						</goals>
@@ -134,9 +134,15 @@
 							<inputSchema>SILO</inputSchema>
 						</database>
 						<target>
-							<packageName>dev.ghazi.jooq.generated</packageName>
+							<packageName>dev.ghazi.app</packageName>
 							<directory>target/generated-sources/jooq</directory>
 						</target>
+						<generate>
+							<pojos>true</pojos>
+							<daos>true</daos>
+							<springAnnotations>true</springAnnotations>
+							<springDao>true</springDao>
+						</generate>
 					</generator>
 				</configuration>
 			</plugin>

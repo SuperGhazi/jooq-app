@@ -1,12 +1,12 @@
 package dev.ghazi.app.repository;
 
-import dev.ghazi.jooq.generated.tables.records.DepartmentRecord;
+import dev.ghazi.app.tables.records.DepartmentRecord;
 import org.jooq.DSLContext;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-import static dev.ghazi.jooq.generated.Tables.DEPARTMENT;
+import static dev.ghazi.app.Tables.DEPARTMENT;
 
 @Repository
 public class DepartmentRepository {
