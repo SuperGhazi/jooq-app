@@ -20,4 +20,17 @@ public class DepartmentRepository {
     public List<DepartmentRecord> findAll() {
         return dsl.selectFrom(DEPARTMENT).fetchInto(DepartmentRecord.class);
     }
+
+    public DepartmentRecord insert(DepartmentRecord record) {
+        return dsl.insertInto(DEPARTMENT)
+                .set(DEPARTMENT.NAME, record.getName())
+                .returning()
+                .fetchOne();
+    }
+
+    public void deleteByName(String name) {
+        dsl.deleteFrom(DEPARTMENT)
+                .where(DEPARTMENT.NAME.eq(name))
+                .execute();
+    }
 }

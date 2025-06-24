@@ -1,5 +1,6 @@
 package dev.ghazi.app.tables.daos;
 
+import dev.ghazi.app.tables.pojos.Department;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -17,5 +18,15 @@ class DepartmentDaoTest {
         var departments = departmentDao.findAll();
         departments.forEach(System.out::println);
         assertFalse(departments.isEmpty(), "Departments should not be empty");
+    }
+
+    @Test
+    void insert() {
+        assertDoesNotThrow(() -> {
+            var department = new Department();
+            department.setName("test2");
+            departmentDao.insert(department);
+            departmentDao.fetchByName("test2").forEach(departmentDao::delete);
+        });
     }
 }
